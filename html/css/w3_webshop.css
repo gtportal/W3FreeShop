@@ -487,9 +487,9 @@ and (max-width : 320px)  {
 #Div_Memu {
 transition-property: width;
 transition-duration: 1s;
--webkit-transition-property: width; /* Safari */
--webkit-transition-duration: 1s; /* Safari */      }
-}
+-webkit-transition-property: width; 
+-webkit-transition-duration: 1s;   }
+
 
 
 #Div_Memu .M1 { display: inline-block; margin:1px 0 0 0;   padding:0px;  width:280px; }
