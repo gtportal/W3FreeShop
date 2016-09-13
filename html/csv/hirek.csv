@@ -1,0 +1,246 @@
+ONev,OURL,OKep,ORLeiras,OKulcszsavak,OTipus,OSzulo,OPrioritas,OTartalom
+"A megrendelés menete",a_megrendeles_menete,megrendel.jpg,"A felhasználó a termékek oldalain található táblázatban helyezheti kosárba az egyes termékeket. Itt adhatja meg a darabszámot is.",megrendelés,11,"W3 Free Shop kezelése",7,"#1 <br>A felhasználó a termékek oldalain található táblázatban helyezheti kosárba az egyes termékeket. Itt adhatja meg a darabszámot is.<br><br>
+Ha a felhasználó a kosárba helyez egyetlen terméket is, akkor valamennyi kategória, alkategória és termék oldalán elérhetővé válik számára a kosár ikon.<br><br>
+A kosár ikonra kattintva a felhasználó bármikor megtekintheti kosarának tartalmát, és módosíthatja azt.<br><br>
+A kosár ablakában található Megrendelés nyomógomb segítségével lehet a megrendelés folyamatát elindítani.<br><br>##
+A megrendelés űrlapon adhatja meg a felhasználó az adatait. (Regisztrált felhasználó adatai automatikusan betöltésre kerülnek, de módosíthatók.) Ezen az űrlapok a megrendelt termékek darabszáma is módosítható. (Akár 0-ra is állíthatók.)
+<br><br>
+Ha a felhasználó a Mégsem nyomógombot választja, akkor tovább barangolhat a webáruház oldalain. A kosár tartalma pedig nem változik.<br><br>
+Ha a Tovább gombra kattint, akkor még egyszer ellenőrizheti a megrendelés tartalmát. Ha itt is a Tovább gombra kattint, akkor a megrendelés elküldött státuszba kerül.<br><br>
+A megrendelésnél kötelező adatok!5! név, telefon és email. Ezen kívül legalább egy terméknek kell szerepelnie a megrendelésben.<br><br> #2
+A megrendelésnél megadható adatok!5! szállítási cím, számlázási cím, valamint egy további telefonszám."
+"Általános jellemzők",Altalanos_jellemzok,gnu100.png,"A W3FreeShop középiskolai oktatáshoz készült, de szabadon letölthető és használható kereskedelmi célra is GNU General Public License v3 alatt.","webáruház jellemzők",11,"W3 Free Shop bemutatása",1,"#1
+<br>
+A W3FreeShop középiskolai oktatáshoz készült, de szabadon letölthető és használható kereskedelmi célra is <a href!4!!1!http!5!//gnu.hu/gplv3.html!1!> GNU General Public License v3 </a> alatt, a forrásra mutató link elhelyezésével az oldalon.<br><br>
+A <a href!4!!1!http!5!//webfejlesztes.gtportal.eu!1!> webáruház készítés</a> tananyaghoz kapcsolódik, amely részletesen bemutatja a webáruházak készítéséhez szükséges HTML5, CSS3, PHP5 és MySql ismereteket. Most készül a W3FreeShop felépítését leíró fejezete.<br>## 
+<br>
+ Az alapfunkciókat megvalósító webáruház készítésénél szempont volt az egyszerűség és a könnyű bővíthetőség bővíthetőség. Mind az adatbázis, mind pedig a PHP motor felépítése lehetővé teszik a kód továbbépítését.<br><br>#2
+<h3>Legfontosabb tulajdonságai</h3>
+<ol><li> 
+A feltölthető oldalak termékek száma nincs korlátozva*
+</li><li>
+A megrendelések száma nincs korlátozva
+</li><li>
+Kódja keresőbarát
+</li><li>
+Egyszerűen kezelhető
+</li><li>
+Gyorsan telepíthető
+</li><li>
+A webáruház tartalma könnyen módosítható (oldalanként vagy tömegesen)
+</li><li>
+A felbontásérzékeny (Responsive) megjelenítés elérhetővé teszi tartalmát mobil készülékeken és táblagépeken is. (Minden látogató akkorában látja oldalait, amilyen méretet az általa használt eszköz lehetővé tesz.)
+</li><li>
+Ingyenes
+<a href!4!!0!http!5!//gnu.hu/gplv3.html!0!> GNU General Public License v3 </a> alatt használható, módosítható és továbbadható.
+</li></ol>
+<small>*Az oldalak számát a telepítésre használt tárhely mérete, és a hozzá tartozó adatbázis mérete korlátozhatja.</small>"
+"A webáruház funkciói",a_webaruhaz_funkcioi,navigacio_2.jpg,"A W3FreeShop a webáruházak 4 alapfunkcióját valósítja meg. Lehetővé teszi egy webáruház legfontosabb feladatainak ellátását.","webáruház funkciók",11,"W3 Free Shop bemutatása",1,"#1
+<br>
+<h3>A W3FreeShop a webáruházak 4 alapfunkcióját valósítja meg!5!</h3>
+<ol><li> 
+<strong>Oldalak</strong> (kategóriák, alkategóriák, termékek, hírkategóriák, hírek stb.) <strong>megjelenítése.</strong>
+</li><li>
+<strong>Felhasználók kezelése</strong> (regisztráció, adatmódosítás, belépés, kilépés, jogosultságok és megrendelések).
+</li><li>
+<strong>Megrendelések kezelése</strong> (kosár összeállítása, tartalmának megrendelése, megrendelések megjelenítése, megrendelések státuszának kezelése, megrendelések törlése)
+</li><li>
+<strong>Adminisztráció</strong> (Oldalak pl. termékek létrehozása, módosítása, törlése). Az oldalak módosítása történhet szerkesztői felületen egyesével vagy szöveges fájlok (CSV) feltöltésével tömegesen. A CSV fájlok elkészíthetők tetszőleges táblázatkezelő szoftverrel vagy adatok nyerhetők ebben a formátumban más adatbázisokból.
+</li></ol>
+##<br>
+A termékeket kategóriákba és alkategóriákba rendezve lehet megjeleníteni.
+<strong>Pl. kisbútorok > kis asztalok > XY asztalka</strong><br><br>
+A híreket is kategóriákba csoportosítva lehet közreadni.
+Pl. Ez a híroldal a W3FreeShop bemutatása.<br><br>
+A hírek és hírkategóriák oldalain tetszőleges információkat meg lehet jeleníteni.
+Pl. Áruház, gyártók adatait, akciókat, a webáruház használatával kapcsolatos információkat...<br><br>
+
+Az adminisztrátor szerkesztheti a webáruház tartalmát. A regisztrált felhasználók megtekinthetik saját megrendeléseik adatait, de az egyszerű látogatók is küldhetnek megrendeléseket.<br><br>
+
+A felhasználók megrendeléseit az adminisztrátor kezeli.<br><br>
+
+Az adminisztrátor szerkesztő oldalai megtekinthetők demo felhasználóként, demo jelszóval belépve.<br><br>
+
+A webáruház felépítésének részletes bemutatása megtalálhat a <a href!4!!0!http!5!//webfejlesztes.gtportal.eu!0!> <strong>Webáruház készítés, webfejlesztés</a></strong> webhelyen."
+"A webáruház kipróbálása",a_webaruhaz_kiprobalasa,kezdolap4.png,"Ennek a webhelynek a megjelenítését is W3FreeShop webáruház motor végzi.","webáruház kipróbálása",11,"W3 Free Shop bemutatása",1,"#1 A <a href!4!!0!http!5!//webaruhaz.gtportal.eu!0!> webaruhaz.gtportal.eu </a> webhely megjelenítését W3FreeShop webáruház motor végzi. <br><br>
+
+A <b>demo</b> felhasználó <b>demo</b> jelszóval történő bejelentkezés után megtekintheti a kezelőfelületeit.##"
+"Webáruház letöltése",webaruhaz_letoltese,googlecode.jpg,"A W3FreeShop webáruház motor letöltése.","webáruház letöltése",11,"Letöltés, telepítés",1,"A W3FreeShop.tar.gz állomány tartalmazza a webáruház működéséhez szükséges fájlokat a megfelelő könyvtárszerkezetbe rendezve. <br><br>
+Linux rendszeren kitömörítve a jogosultságok beállításai is megmaradnak, így W3FreeShop könyvtár tartalmát telepítésnél elég felmásolni a szerver saját domain névhez tartozó publikus könyvtárába és már meg is kezdhető a telepítés.<br><br>##
+
+A W3FreeShop.zip állomány esetén, kitömörítés és feltöltés után a szerveren be kell állítani a webáruház fájljainak és könyvtárainak jogosultságait.<br><br>
+
+#1
+<h3>W3FreeShop 1.0 letöltése</h3><br>
+A W3FreeShop 1.0 (W3FreeShop.tar.gz) itt tölthető le!5! <a href!4!!1!http!5!//code.google.com/p/w3freeshop/!1!>http!5!//code.google.com/p/w3freeshop/</a>"
+"Webáruház telepítése",webaruhaz_telepitese,telepit_1.jpg,"A webáruház telepítése nem igényel web programozói ismereteket. Gyors és egyszerű.","webáruház telepítés",11,"Letöltés, telepítés",1,"<h3>A telepítés feltételei</h3>
+A telepítéshez szükség van egy internetes tárhelyre, amely lehetővé teszi PHP5 használatát. Szükség  van egy darab a tárhelyhez kapcsolódó MySql adatbázisra, amely PHP-ból MySqli függvények segítségével menedzselhető.<br><br>
+A webáruház telepítése nem igényel web programozói ismereteket. Gyors és egyszerű.##<br><br>
+
+<h3>A telepítés lépései</h3>
+
+<ol><li>
+W3FreeShop.tar.gz letöltése
+</li><li>
+W3FreeShop.tar.gz kitömörítése
+</li><li>
+W3FreeShop könyvtár tartalmának feltöltése a szerver doain-hoz tartozó könyvtárába (A W3FreeShop könyvtárat nem szabad létrehozni a szerveren!)
+</li><li>
+A webáruház képeinek feltöltése a kepek könyvtárba
+</li><li>
+A setup.php futtatása. Ekkor kell megadni a webáruház alapadatait (Neve, Adminisztrátor adatai, Üzemeltető cég főbb adatai, MySql kapcsolat adatai)
+</li><li>
+A setup.php-t futtatás után töröljük.
+</li><li> A tartalom (Oldalak, termékek..) feltöltése
+<ul><li>
+A szerkesztő felületen egyesével
+</li><li>
+Szöveges fájl segítségével tömegesen
+</li></ul>
+</li><li>
+A telepítés megtörtént, már jöhetnek a megrendelések
+</li></ol>
+<br><br>
+#1"
+"Navigáció a webáruházban",navigacio_a_webaruhazban,navigacio.jpg,"Az oldal bal felső sarkában találhatók a navigációhoz szükséges ikonok!5! Menü, Kezdőlap, Szülőoldalak.","webáruház navigáció",11,"W3 Free Shop kezelése",99,"<br>
+<h3>Az oldal bal felső sarkában találhatók a navigációhoz szükséges ikonok</h3>
+<ol><li>
+<strong>A menü ikon!5!</strong> A menüoszlop megjelenítésére/elrejtésére szolgál
+</li><li>
+<strong>Kezdőlap ikon!5! </strong>A webhely bármely oldaláról erre kattintva a felhasználó gyorsan visszatérhet a kezdőlapra
+</li><li>
+<strong>Szülőoldalak!5! </strong>
+Alkategória esetén a főkategória, termék esetén a terméket tartalmazó alkategória és kategória... elérését teszi lehetővé. (Egy vagy két szintet lehet visszalépni segítségével az oldalstruktúrában.)
+</li></ol>##
+<br><br>
+<h3>Az oldalstruktúra</h3>
+I. A főoldalon megtalálhatók a webáruház kategóriáinak linkjei/képei.<br>
+II. A kategóriák oldalain megtalálhatók alkategóriáik linkjei/képei.<br>
+III. Az alkategóriák oldalain megtalálhatók az alkategóriába tartozó termékek linkjei/képei.<br>
+IV. A hírkategóriák oldalain megtalálhatók a hírkategóriába tartozó híroldalak linkjei/képei.<br><br>
+
+Ezen a struktúrán a felhasználó végighaladhat a webáruház oldalainak többségén a menü megjelenítése nélkül."
+"Webáruház menü",webaruhaz_menu,menu_2.jpg,"A menü minden oldalon megjeleníthető vagy elrejthető kívánság szerint a bal felső sarokban található ikon segítségével.","webáruház menü",11,"W3 Free Shop kezelése",8,"#1<br>A menü minden oldalon megjeleníthető vagy elrejthető kívánság szerint a bal felső sarokban található ikon segítségével.<br><br>
+Alapértelmezetten nem látszik, ami lehetővé teszi, hogy kis felbontású megjelenítő eszközökön (mobiltelefon, táblagép) is a hasznos tartalom jelenjen meg a képernyőn.<br><br>
+A navigációhoz a menüre a webáruházban történő böngészés közben nincs feltétlen szükség. A termékek és hírek nélküle is elérhetők.<br><br>
+A menüoszlopban kapott helyet a be- és kijelentkező űrlap, néhány a felhasználó és megrendelés kezelésére szolgáló oldal linkje.<br>##<br>
+A megjelenített menüpontok számának csökkentése, így az áttekinthetőség megőrzése érdekében csak azok az alkategóriák linkjei látszanak, amelyek főkategóriája aktív."
+"Beállítások tömeges feltöltése",beallitasok_tomeges_feltoltese,tomeges.jpg,"Nagy mennyiségű termék esetén az egyesével való feltöltögetés, az oldalak/termékek paramétereinek egyesével történő beállítása igen hosszú és fárasztó feladat lenne.<br>","webáruház beállítása",11,"W3 Free Shop kezelése",1,"#1 <br>
+Nagy mennyiségű termék esetén az egyesével való feltöltögetés, az oldalak/termékek paramétereinek egyesével történő beállítása igen hosszú és fárasztó feladat lenne.<br><br>
+Tömeges feltöltés esetén az oldalak/termékek jellemzőit egy-egy .csv kiterjesztésű szöveges fájlba kell írni, vagy meglévő adatbázisból exportálni. A CSV fájl szerkeszthető tetszőleges táblázatkezelő vagy szövegszerkesztő program segítségével. 
+<br><br>
+Praktikus a táblázatkezelő (MS Office, OpenOffice, LibreOffice... ) használata. Egy-egy oldal adatai külön sorokba, az azonos jellemzők külön oszlopokba kerülnek<br><br>##
+Árváltozás esetén elegendő a változó termékek neveit, kódjait és árát 3 oszlopban felsorolni. 
+<br><br>
+##A táblázatot CSV formátumba menteni. A !0!szerkesztés!0!, majd a !0!Tömeges beállítás!0! (alul) menüpontok kiválasztása után a !0!Termékek feltöltése!0! ablakban kell kitallózni saját gépről az elmentett fájlt. Ezt követően már csak a feltöltés gomb megnyomása a feladat. <br><br>
+<h3>A tömeges feltöltésnél a következő kis ablakokat találjuk</h3>
+<ol><li>
+Kategóriák feltöltése
+</li><li>
+Alkategóriák feltöltése
+</li><li>
+Termékek feltöltése
+</li><li>
+Termékek jellemzők feltöltése
+</li><li>
+Képek feltöltése
+</li><li>
+Hírkategória feltöltése
+</li><li>
+Hírek feltöltése
+</li></ol><br>
+<h3>Fontos a sorrend!</h3>
+Csak az az oldal kerül feltöltésre, amelynek szülőoldalát már feltöltöttük.<br><br>
+Termékek esetén csak az a termék, amelynek alkategóriája már létezik.<br><br>
+Ezért termékek esetén először a kategóriákat, majd az alkategóriákat kell feltölteni. Ezt követően jöhet a termék végül a termék jellemzőinek feltöltése.<br><br>
+Ha a szülőoldalak nem változnak, akkor elegendő csak a termékek vagy termékjellemzők feltöltése is.<br><br>
+Hírek is csak létező hírkategóriához tölthetők.<br><br>
+A !0!Képek feltöltése!0! nem a képfájlok feltöltését jelenti, hanem a képek adataiét. 5 kép tartozhat minden oldalhoz ezek fájlnevét, nevét, leírását lehet itt feltölteni, és azt, hogy egy-egy kép melyik oldalhoz tartozik.<br><br>
+<h3>Fontos a fájlnév!</h3>
+A fájlnevek kötöttek. Csak a következők használhatók!5!
+kategoria.csv, alkategoria.csv, termek.csv, termek_jellemzo.csv, kep.csv, hirkategoriak.csv, hirek.csv<br><br>
+
+<h3>Fontos a CSV fáj felépítése!</h3>
+A csv fájlok feltöltését végző szkript az ismeretlen nevű oszlopokat figyelmen kívül hagyja. A használható oszlopnevek megtalálhatók a példafájlokba. (csv könyvtárban)<br><br>
+Az oszlopok sorrendje tetszőleges.<br><br>
+Nem kötelező, hogy egy csv fájl valamennyi oszlopot tartalmazza.<br><br>
+A CSV fájlok felépítése megtalálható<a href!4!!0!http!5!//webfejlesztes.gtportal.eu!0!> <strong>Webáruház készítés, webfejlesztés</strong> </a>webhelyen."
+"Webáruház adminisztráció",webaruhaz_adminisztracio,szerkesztes.jpg,"Az adminisztrátor módosíthatja a webáruház tartalmát. Kategóriákat, alkategóriákat, termékeket, hírkategóriákat és híreket hozhat létre. Módosíthatja vagy akár törölheti őket.","Webáruház adminisztráció",11,"W3 Free Shop kezelése",1,"#1 <br>
+<h2>Tartalom kezelése</h2>
+Az adminisztrátor módosíthatja a webáruház tartalmát. Kategóriákat, alkategóriákat, termékeket, hírkategóriákat és híreket hozhat létre. Módosíthatja vagy akár törölheti őket. Egyenként vagy csoportosan.
+<br><br>
+Bejelentkezés után a szerkesztés menüpontra kattintva szerkesztés oldalon kiválaszthatja azt az oldalt, amelynek tartalmát vagy beállításait meg kívánja változtatni.
+<br><br>
+Egy működő webáruháznak több száz vagy több ezer oldala is lehet. Annak érdekében, hogy könnyebben elérhetővé váljon a keresett oldal, a találatokat oldaltípus (pl. termék) és szülőoldal (pl. üvegasztalok alkategória) alapján lehet szűkíteni lehet. Egy képernyőn 15 weboldal adatai jelennek meg, ha a szűkítési feltételeknek ennél több megfelel, akkor lapozással érhető el a többi.<br><br>
+
+<h3>A kiválasztott oldal</h3>
+<ol><li>módosítható
+</li><li>törölhető
+</li><li>másolható
+</li></ol><br>
+##
+Másolásnál új néven, új oldal jön létre az eredetivel azonos tartalommal. Ezt a funkciót akkor érdemes használni, ha több hasonló termékünk van. Ekkor az oldal prioritását célszerű 0-ra állítani, amíg nem végez az adtok módosításával (A 0 prioritású oldal a látogatók számára nem látható)
+<br><br>
+Az oldalak törlését mindig meg kell erősíteni. Ha gy termékoldal több terméket is tartalmaz, akkor ki kell választani azokat amelyeket törölni szeretnénk. Egy termékeket bemutató oldal csak akkor törlődik, ha a rajta lévő valamennyi terméket töröljük. Az oldalon található termékek egy részének törlésekor csak a kiválasztott termékek törlődnek, a többi továbbra is elérhető marad.<br><br>
+
+<h2>Alapbeállítások</h2>
+Módosításnál a Alapbeállítások fület választva beállíthatók az oldal alapadatai.
+
+ <dl><dt>Oldal/terméknév
+</dt><dd>Az oldal egyedi neve. (Egy néven csak egy oldal szerepelhet az áruházban, függetlenül a típusától.) A oldalnév csak új oldal létrehozásakor vagy egy meglévő másolásakor adható meg.
+
+</dd><dt>Az oldal kulcsszavai
+</dt><dd>Az oldal HTML kódjának fejlécében, a keresők számára megjelenítendő információ. A látogatók nem fogják látni.
+
+</dd><dt>Az oldal rövid leírása
+</dt><dd>Az oldal HTML kódjának fejlécében, a keresők számára megjelenítendő információ. Ha az adminisztrátor helyesen adja meg, akkor a keresők találataiban az oldal neve alatt ez olvasható.
+
+</dd><dt>Az oldal prioritása
+</dt><dd>A menüben és az egyéb oldallistáknál a megjelenítés sorrendjét határozza meg. Minél nagyobb, az oldal annál előrébb kerül. Ha értéke nulla, akkor a felhasználók nem láthatják. A 1 és 99 közötti prioritással rendelkező hírkategóriák a menü végére, az ennél nagyobb prioritású hírkategóriák a menü elejére kerülnek.
+
+</dd><dt>Az oldal típusa
+</dt><dd>Meghatározza az oldal viselkedését. 
+
+</dd><dt>A szülőoldal 
+</dt><dd>Az aktuális oldal a menüben és más oldallistáknál is mindig a szülőoldala alatt jelenik meg. 
+
+</dd><dt>A kiskép 
+</dt><dd>Az aktuális oldal linkjének a menüben és más oldallistákon történő megjelenítésekor látható képe.   
+
+</dd></dl>
+<br><br>
+<h2>Tartalom</h2>
+Módosításnál a Tartalom fület választva megadható az oldal szöveges tartalma. 
+<br><br>
+Oldaltípusonként ezen kívül számos más tartalmi elem is megtalálható a weboldalon.
+<br><br>
+<h2>Képek</h2>
+Módosításnál a Képek fület választva  oldalanként 5 db kép adatait lehet megadni.
+<br><br>
+A kliens számítógépről ezek a képek feltölthetők. A kép neve esetenként alatt látható. A kép leírása pedig a kép helyettesítő szövegét adja. A webáruház akadálymentesítése miatt és a keresők számára fontos, hogy minden képnek legyen egy rövid egyedi leírása.
+<br><br>
+<h2>Előnézet</h2>
+Módosításnál a Előnézet fület választva megtekinthetjük, hogyan fog kinézni az adott weboldal különböző felbontások mellett.
+
+<br><br>
+<h1>Termékek beállításai</h1>
+
+<h2>Termék</h2>
+Módosításnál a Termék fület választva  oldalanként 10 db terméket hozhatunk létre. (Nem kell egy konkrét terméket több színben vagy méretben külön oldalakon elhelyezni. )
+<br><br>
+Termékoldalanként egy kiemelt tulajdonság lehet, amelynek értéke és vele a termék kódja is termékenként változik. (Pl. egy ruha maximum 10 méretben jeleníthető meg különböző termékkóddal)
+<br><br>
+Az egyes termékek ára, szorzója és szállítási feltételei is különböző lehet. (Pl. Ha XXL-es pólóból nagy a raktárkészlet, akkor a szorzó csökkentésével lehet akciózni. )
+
+
+
+
+<br><br>
+
+<h2>Termék jellemző</h2>
+Módosításnál a Termék fület választva oldalanként 10 db jellemző adható meg. 
+<br><br>
+Ezek a jellemzők terméktípusonként változnak, így meg kell adni a jellemző nevét és értékét is. Az új oldal létrehozása helyett egy meglévő másolását választjuk, akkor hasonló jellegű termék esetén a jellemzők nevének beírása megspórolható.
+<br><br>
+<h2>Termékleírás</h2>
+Módosításnál a Termékleírás fület választva minden termékoldalhoz rendelhető egy termékleírás, ami az adott oldalon található valamennyi termékváltozatra igaz."

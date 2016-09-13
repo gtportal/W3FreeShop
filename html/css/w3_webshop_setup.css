@@ -1,0 +1,93 @@
+
+
+body { 
+background-color: #246; 
+color: #fff;
+}
+
+
+
+.kiemel {font-size: 1.3em; font-weight: bold;}
+
+#webaruhazlogo {margin: 10px 20px 10px 10px;}
+
+a {color:#6699cc;}
+h1, h2, h3  {font-family: 'Alegreya Sans', sans-serif; font-style:italic;}
+
+#lap {
+  margin: 0; padding: 0; position:relative;width:100%;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+
+
+/* =============================================================================
+   FEJLÉC
+   ========================================================================== */
+
+#fejlec {width:100%; height: 100px; padding: 5px; margin: 0px; position:absolute; top: 0px; 
+ border:0; background: linear-gradient(to top,  #000, #333);
+ font-style:italic; line-height: 1.8em; font-family: 'Alegreya Sans', sans-serif;  overflow: hidden;
+
+box-sizing:border-box;
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+}
+
+#fejlec h1 {margin: 0px; line-height: 1.2em;}
+
+/* =============================================================================
+   ÁLTALÁNOS HIBAJELZÉS
+   ========================================================================== */
+
+input.Error {border:3px solid red;}
+p.Error, label.Error {color: red; font-weight: bold;} 
+
+
+/* =============================================================================
+   TARTALOM ŰRLAP
+   ========================================================================== */
+
+#tartalom {
+position:absolute; top: 120px; 
+width:96%;
+box-sizing:border-box;
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+padding: 5px 5px 50px 15px; 
+color:#fff;
+
+
+}
+
+#HatterKep { position:absolute;
+width:100%; height:800px; top:100px;
+box-sizing:border-box;
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+background-image:url('../kepek/ajandek1.png'); opacity:0.2; 
+background-size: contain; z-index:-10; 
+background-repeat:no-repeat; background-position:center;
+}
+
+
+#Visszajelzes {float: right;}
+#FormDiv {width:800px;}
+#SetupFormDiv legend, #SetupFormDiv label {font-weight: bold;}
+#SetupFormDiv  {line-height:1em;}
+
+/* =============================================================================
+   LÁBLÉC MEGJELENÍTÉSE
+   ========================================================================== */
+
+#Lablec {height: 45px; background-color:#000; position:fixed; bottom: 0; left: 0;
+width:100%; background: linear-gradient(to top,  #000, #181818);}
+
+#Lablec {text-align:center; font-style:italic; }
+
+#Lablec p {margin:10px 0 0 0; }
+
+
+
