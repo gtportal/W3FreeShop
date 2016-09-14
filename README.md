@@ -34,7 +34,7 @@ A **W3 Free Shop** megtekinthető működés közben [w3freeshop.hu](http://w3fr
 * [Kasuba webáruház](https://www.w3plaza.hu/kasuba/) (Kasuba Shop)
 
 ## Hol található a továbbfejlesztett változat leírása?
-[Webáruház kézkönyv](https://www.w3plaza.hu/?f0=webaruhaz_kezkonyv) (W3 Pláza)
+* [Webáruház kézkönyv](https://www.w3plaza.hu/?f0=webaruhaz_kezkonyv) (W3 Pláza)
 
 ## Hogy lehet webáruházat legegyszerűbben indítani?
 Ha gyorsan szeretne mobilbarát, felhasználóbarát és egyszerűen kezelhető webáruházat indítani több lehetősége is van:
