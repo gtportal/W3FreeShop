@@ -13,7 +13,7 @@ A **W3 Free Shop** megtekinthető működés közben [w3freeshop.hu](http://w3fr
 
 
 ## A W3 Free Shop felépítésének, működésének bemutatása
-A [Webáruház készítés tananyag](http://webfejlesztes.gtportal.eu/) külön fejezetben, részletesen bemutatja a W3 Free Shop webáruház szoftver felépítését és működését.
+* A [Webáruház készítés tananyag](http://webfejlesztes.gtportal.eu/) külön fejezetben, részletesen bemutatja a W3 Free Shop webáruház szoftver felépítését és működését.
 
 ### Főbb témakörei
 * Webáruház adatbázisa
