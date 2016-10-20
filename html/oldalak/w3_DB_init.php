@@ -209,7 +209,7 @@ $FejlecStr ='';
           $j++;
         }
         if ((strlen($Valasz) > 0) and (strlen($Valasz) > 0)) {
-          $InsertIntoStr = "INSERT INTO captcha_kodok VALUES ('', '".$Kerdes."','".$Valasz."')"; 
+          $InsertIntoStr = "INSERT INTO captcha_kodok (CKerdes, CValasz) VALUES ('".$Kerdes."','".$Valasz."')"; 
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  
             {$ErrorStr = "MySqli hiba captcha kódok feltöltésénél(" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink); }  
         }
@@ -231,7 +231,7 @@ $FejlecStr ='';
     $DropTableStr = "DROP TABLE IF EXISTS oldal"; 
     if (mysqli_query($MySqliLink,$DropTableStr))
     {
-      $HTMLkod .= "Az <b>'oldal'</b> tábla törlődött.<br>"; 
+      $HTMLkod .= "Az <b>'oldal'</b> tábla törlődött. <br>"; 
     } else {
       $Err=1;  $HTMLkod .= "MySqli hiba" ;
     }
@@ -249,6 +249,7 @@ $FejlecStr ='';
      PRIMARY KEY (id),
      UNIQUE INDEX ONev (ONev)
     )";
+   
     if (mysqli_query($MySqliLink,$CreateTableStr))
     {
       $HTMLkod .= "Az <b>'oldal'</b> tábla elkészült.<br>";
@@ -257,17 +258,18 @@ $FejlecStr ='';
     }
 
 // Alapértelmezett oldalak feltöltése
-   $InsertIntoStr = "INSERT INTO oldal VALUES";
-   $InsertIntoStr .= "('','".$wsNev."','','','Egyedi webáruház készítésére alkalmas szabadon letölthető webáruház script.','webáruház, ingyen webáruház',0,0,1, NOW()), ";
-   $InsertIntoStr .= "('','Oldaltérkép','oldalterkep','reg.jpg','A webáruház oldalainak listája','oldallista',56,1,1, NOW()),";
-   $InsertIntoStr .= "('','Regisztáció','regisztracio','reg.jpg','Felhasználók regisztációja és regisztrációs adatok módosítása','vásárlói regisztráció',50,1,1, NOW()),";
-   $InsertIntoStr .= "('','Jelszó módosítás','jelszo_modositas','jsz.jpg','Felhasználói jelszó módosítása','módosítás',51,1,1, NOW()),";
-   $InsertIntoStr .= "('','Kosar','kosar','kosar.jpg','A kosár tartalma','kosár',52,1,1, NOW()),";
-   $InsertIntoStr .= "('','Megrendelés','megrendel','rendel.jpg','Termékek megrendelése','megrendelés',53,1,1, NOW()),";
-   $InsertIntoStr .= "('','Rendelések litája','rendelesek','rlista.jpg','Megrendelt termékek listája','Rendelések',54,1,1, NOW()),";
-   $InsertIntoStr .= "('','Kapcsolat','kapcsolat','kapcs.jpg','Kapcsolat leírása','Kapcsolat',55,1,1, NOW()),";
-   $InsertIntoStr .= "('','Hiba','hiba','kapcs.jpg','Nem létehő vagy hibás oldal.','',57,1,1, NOW()),";
-   $InsertIntoStr .= "('','Szerkeszt','szerkeszt','szerkeszt.jpg','','',101,1,1, NOW());";
+   $InsertIntoStr = "INSERT INTO oldal (id, ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum) VALUES
+        (1,'".$wsNev."','','','Egyedi webáruház készítésére alkalmas szabadon letölthető webáruház script.','webáruház, ingyen webáruház',0,0,1, NOW()), 
+        (2,'Oldaltérkép','oldalterkep','reg.jpg','A webáruház oldalainak listája','oldallista',56,1,1, NOW()),
+        (3,'Regisztáció','regisztracio','reg.jpg','Felhasználók regisztációja és regisztrációs adatok módosítása','vásárlói regisztráció',50,1,1, NOW()),
+        (4,'Jelszó módosítás','jelszo_modositas','jsz.jpg','Felhasználói jelszó módosítása','módosítás',51,1,1, NOW()),
+        (5,'Kosar','kosar','kosar.jpg','A kosár tartalma','kosár',52,1,1, NOW()),
+        (6,'Megrendelés','megrendel','rendel.jpg','Termékek megrendelése','megrendelés',53,1,1, NOW()),
+        (7,'Rendelések litája','rendelesek','rlista.jpg','Megrendelt termékek listája','Rendelések',54,1,1, NOW()),
+        (8,'Kapcsolat','kapcsolat','kapcs.jpg','Kapcsolat leírása','Kapcsolat',55,1,1, NOW()),
+        (9,'Hiba','hiba','kapcs.jpg','Nem létehő vagy hibás oldal.','',57,1,1, NOW()),
+        (10,'Szerkeszt','szerkeszt','szerkeszt.jpg','','',101,1,1, NOW());";
+     
      if (!mysqli_query($MySqliLink,$InsertIntoStr))  {
         $HTMLkod .=  " MySqli hiba (" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink);   $Err=1; 
      }
@@ -293,10 +295,11 @@ function Letrehoz_OldalTartalomTabla()
     $CreateTableStr="CREATE TABLE IF NOT EXISTS oldal_tartalom (
      id int NOT NULL AUTO_INCREMENT,  
      Oid int(11) NOT NULL DEFAULT '0',
-     OTartalom TEXT COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
+     OTartalom text COLLATE utf8_hungarian_ci NOT NULL,
      PRIMARY KEY (id),
      UNIQUE INDEX Oid (Oid)
     )";
+  
     if (mysqli_query($MySqliLink,$CreateTableStr))
     {
       $HTMLkod .=  "Az <b>'oldal_tartalom'</b> tábla elkészült.<br>";
@@ -305,18 +308,17 @@ function Letrehoz_OldalTartalomTabla()
       $HTMLkod .=  "MySqli hiba ";
     }
 
-   $InsertIntoStr = "INSERT INTO oldal_tartalom VALUES";
-   $InsertIntoStr .= "('',1,'Webáruház neve'), ";
-   $InsertIntoStr .= "('',2,'Oldaltérkép '),";
-   $InsertIntoStr .= "('',3,'Regisztáció'), ";
-   $InsertIntoStr .= "('',4,'Jelszó módosítás'), ";
-   $InsertIntoStr .= "('',5,'Kosar'), ";
-   $InsertIntoStr .= "('',6,'Megrendelés'), ";
-   $InsertIntoStr .= "('',7,'Rendelések litája'), ";
-   $InsertIntoStr .= "('',8,'Kapcsolat'), ";
-   $InsertIntoStr .= "('',9,'Ön a webhely nem létező oldalát próbálta megnyitni.'), ";
-
-   $InsertIntoStr .= "('',10,'Szerkeszt');";
+   $InsertIntoStr = "INSERT INTO oldal_tartalom (id, Oid, OTartalom) VALUES";
+   $InsertIntoStr .= "(1,1,'Webáruház neve'), ";
+   $InsertIntoStr .= "(2,2,'Oldaltérkép '),";
+   $InsertIntoStr .= "(3,3,'Regisztáció'), ";
+   $InsertIntoStr .= "(4,4,'Jelszó módosítás'), ";
+   $InsertIntoStr .= "(5,5,'Kosar'), ";
+   $InsertIntoStr .= "(6,6,'Megrendelés'), ";
+   $InsertIntoStr .= "(7,7,'Rendelések litája'), ";
+   $InsertIntoStr .= "(8,8,'Kapcsolat'), ";
+   $InsertIntoStr .= "(9,9,'Ön a webhely nem létező oldalát próbálta megnyitni.'), ";
+   $InsertIntoStr .= "(10,10,'Szerkeszt');";
      if (!mysqli_query($MySqliLink,$InsertIntoStr))  {
         $HTMLkod .=  " MySqli hiba (" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink);  $Err=1;  
      }
@@ -413,10 +415,10 @@ function Letrehoz_TermekLeirasTabla()
     } else { 
       $Err=1; $HTMLkod .=  "MySqli hiba ";
     }
-    $CreateTableStr="CREATE TABLE IF NOT EXISTS termek_leiras (
+     $CreateTableStr="CREATE TABLE IF NOT EXISTS termek_leiras (
      id int NOT NULL AUTO_INCREMENT,  
      Oid int(11) NOT NULL DEFAULT '0',
-     TLeiras  TEXT COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
+     TLeiras text COLLATE utf8_hungarian_ci NOT NULL,
      PRIMARY KEY (id),
      UNIQUE INDEX Oid (Oid)
     )";
@@ -592,6 +594,11 @@ global $MySqliLink, $Err;
   } else { 
     $Err=1; $HTMLkod .= "MySqli hiba ";
   }
+  
+    $InsertIntoStr = "INSERT INTO latogato_szamlalo (id, latogatasok) VALUES (1,0);";
+    if (!mysqli_query($MySqliLink,$InsertIntoStr))  {
+       $HTMLkod .=  " MySqli hiba ";   $Err=1; 
+    }
 
   $DropTableStr = "DROP TABLE IF EXISTS online";
   if (mysqli_query($MySqliLink,$DropTableStr))
@@ -602,7 +609,7 @@ global $MySqliLink, $Err;
   }
   $CreateTableStr="CREATE TABLE IF NOT EXISTS online (
    id int NOT NULL AUTO_INCREMENT,  
-   ip  VARCHAR(20) NOT NULL DEFAULT '',
+   ip  VARCHAR(20) NOT NULL,
    datum DATETIME DEFAULT NULL,
    PRIMARY KEY (id)
   )";
@@ -613,10 +620,7 @@ global $MySqliLink, $Err;
     $Err=1; $HTMLkod .= "MySqli hiba ";
   }
 
-   $InsertIntoStr = "INSERT INTO latogato_szamlalo VALUES ('',0);";
-     if (!mysqli_query($MySqliLink,$InsertIntoStr))  {
-        $HTMLkod .=  " MySqli hiba ";   $Err=1; 
-     }
+
 
   return $HTMLkod;
 }

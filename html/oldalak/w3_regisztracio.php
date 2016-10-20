@@ -274,15 +274,15 @@ global $MySqliLink, $mm_felhasznalo, $mm_captchaMut, $hozzaferes;
           // A korábban tárolt telefonszámok törlése, a friss számok beszúrása
           $SelectStr = "Delete FROM felhasznalo_telefon  WHERE Fid = $id";
           if (!mysqli_query($MySqliLink,$SelectStr)) {die("Hiba RG 09");}
-          $InsertIntoStr = "INSERT INTO felhasznalo_telefon VALUES ('', $id, '$Ftelszam')";
+          $InsertIntoStr = "INSERT INTO felhasznalo_telefon (Fid, Ftelszam) VALUES ( $id, '$Ftelszam')";
           if (!mysqli_query($MySqliLink,$InsertIntoStr)) {die("Hiba RG 10");}          
           if ($Ftelszam1>'') {
-            $InsertIntoStr = "INSERT INTO felhasznalo_telefon VALUES ('', $id, '$Ftelszam1')";
+            $InsertIntoStr = "INSERT INTO felhasznalo_telefon (Fid, Ftelszam) VALUES ($id, '$Ftelszam1')";
             if (!mysqli_query($MySqliLink,$InsertIntoStr)) {die("Hiba RG 11");}
           }
 
           // A felhasználói adatok módosítása tényének és jellemzőinek tárolása
-          $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$id.",'".$r_ip."','Adatmódosítás',NOW())";
+          $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum) VALUES ($id,'".$r_ip."','Adatmódosítás',NOW())";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 12");}
           // Csak az utosó 5 adatmódosítás jellemzőit tároljuk
           $SelectStr = "SELECT * FROM felhasznalo_mod WHERE Fid=$id AND Ftev='Adatmódosítás'"; 
@@ -324,22 +324,23 @@ global $MySqliLink, $mm_felhasznalo, $mm_captchaMut, $hozzaferes;
 
         // A "felhasznalo_reg" tába frissítése
         $Fujjelszo = md5($Fujjelszo);
-        $InsertIntoStr = "INSERT INTO felhasznalo_reg VALUES ('', '".$Fnev."','".$Fszemnev."','".$Fujjelszo."','".$Femail."',5,0)";
+        $InsertIntoStr = "INSERT INTO felhasznalo_reg (Fnev, Fszemnev, Fjelszo, Femail, Fszint, Fhiba) "
+                       . "VALUES ('".$Fnev."','".$Fszemnev."','".$Fujjelszo."','".$Femail."',5,0)";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 17");} else { $ID1= mysqli_insert_id($MySqliLink);} 
         // A "felhasznalo_cim" tába frissítése
-        $InsertIntoStr = "INSERT INTO felhasznalo_cim VALUES ('', ".$ID1.",'".$Forszag."' 
+        $InsertIntoStr = "INSERT INTO felhasznalo_cim (Fid, Forszag, Fvaros, Firszam, Fcim) VALUES (".$ID1.",'".$Forszag."' 
         ,'".$Fvaros."','".$Firszam."','".$Fcim."')";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 18");}
         // A korábban tárolt telefonszámok törlése, a friss számok beszúrása
         if ($Ftelszam > '') {
-          $InsertIntoStr = "INSERT INTO  felhasznalo_telefon VALUES ('', ".$ID1.",'".$Ftelszam."')";
+          $InsertIntoStr = "INSERT INTO  felhasznalo_telefon (Fid, Ftelszam) VALUES (".$ID1.",'".$Ftelszam."')";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 19");}
         }
         if ($Ftelszam1 > '') {
-          $InsertIntoStr = "INSERT INTO  felhasznalo_telefon VALUES ('', ".$ID1.",'".$Ftelszam1."')";
+          $InsertIntoStr = "INSERT INTO  felhasznalo_telefon (Fid, Ftelszam) VALUES (".$ID1.",'".$Ftelszam1."')";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 20");}
         }
-        $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$ID1.",'".$r_ip."','Létrehozás',NOW())";
+        $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum) VALUES (".$ID1.",'".$r_ip."','Létrehozás',NOW())";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 21");}
         // Beléptetjük újdonsűlt felhasználónkat
         $hozzaferes     = $_SESSION[hozzaferesi_szint]=5;    
@@ -447,7 +448,7 @@ function JelszoModosit()
       $UpdateStr  = "UPDATE felhasznalo_reg SET Fjelszo = '$Fjelszo' WHERE Fnev='$Fnev'";
       if (!mysqli_query($MySqliLink,$UpdateStr)) {die("Hiba RG 24");}
       // A jelszómódosítás jellemzőinek tárolása a "felhasznalo_mod" táblába
-      $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$ID1.",'".$r_ip."','Jelszó módosítás',NOW())";
+      $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum) VALUES (".$ID1.",'".$r_ip."','Jelszó módosítás',NOW())";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba RG 25");}
 
       // A felhasználó korábbi jelszómódosításai számának lekérdezése

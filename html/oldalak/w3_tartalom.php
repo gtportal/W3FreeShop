@@ -261,7 +261,7 @@ function Modosit_TermekKosar()
         } 
           else {
           mysqli_free_result($result);
-          $InsertIntoStr = "INSERT INTO kocsi VALUES ('','$mm_azon','".$TermekKod[$j]."',$DB, NOW())";
+          $InsertIntoStr = "INSERT INTO kocsi (mmAzon, TKod, DB, ODatum) VALUES ('$mm_azon','".$TermekKod[$j]."',$DB, NOW())";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo "Hiba T10";}
         }
      } else {

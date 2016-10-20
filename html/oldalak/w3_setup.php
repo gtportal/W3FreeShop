@@ -105,36 +105,42 @@ global $wsNev, $CegNev, $CegCim, $CegTel, $DBNev, $DBJelszo, $AdNev, $AdfNev, $D
 
 
   // Az adminisztrátor adatainak felvétele
-  $InsertIntoStr = "INSERT INTO felhasznalo_reg VALUES ('', '$AdfNev','$AdNev','$AdJSZ',' ',10,0)";
+  $InsertIntoStr = "INSERT INTO felhasznalo_reg (Fnev, Fszemnev, Fjelszo, Femail, Fszint, Fhiba)"
+                 . "VALUES ('$AdfNev','$AdNev','$AdJSZ',' ',10,0)";
   if (!mysqli_query($MySqliLink,$InsertIntoStr))  { 
     $Err=1;  $ErrStr .= "MySqli hiba ";    
   } else { 
     $ID1= mysqli_insert_id($MySqliLink); 
-    $InsertIntoStr = "INSERT INTO felhasznalo_cim VALUES ('', ".$ID1.",' ',' ',' ',' ')";
+    $InsertIntoStr = "INSERT INTO felhasznalo_cim (Fid, Forszag, Fvaros, Firszam, Fcim)"
+                   . "VALUES (".$ID1.",' ',' ',' ',' ')";
     if (!mysqli_query($MySqliLink,$InsertIntoStr))  { 
       $Err=1;  $ErrStr .= "MySqli hiba ";    
     }
     $r_ip     = getip(); 
-    $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$ID1.",'".$r_ip."','Létrehozás',NOW())";
+    $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum)"
+                   . "VALUES (".$ID1.",'".$r_ip."','Létrehozás',NOW())";
     if (!mysqli_query($MySqliLink,$InsertIntoStr))  { 
       $Err=1;  $ErrStr .= "MySqli hiba ";}
   }
 
   // Az demo felhasználó adatainak felvétele
   $JSZ = md5('demo');
-  $InsertIntoStr = "INSERT INTO felhasznalo_reg VALUES ('', 'demo','demo','$JSZ',' ',6,0)";
+  $InsertIntoStr = "INSERT INTO felhasznalo_reg (Fnev, Fszemnev, Fjelszo, Femail, Fszint, Fhiba)"
+                 . "VALUES ('demo','demo','$JSZ',' ',6,0)";
   if (!mysqli_query($MySqliLink,$InsertIntoStr))  { $Err=1;
       $ErrStr .= "MySqli hiba a <b>'felhasznalo_reg'</b> tábla írásánál 
                    (" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink);    
   } else { 
     $ID1= mysqli_insert_id($MySqliLink); 
-    $InsertIntoStr = "INSERT INTO felhasznalo_cim VALUES ('', ".$ID1.",' ',' ',' ',' ')";
+    $InsertIntoStr = "INSERT INTO felhasznalo_cim (Fid, Forszag, Fvaros, Firszam, Fcim)"
+                   . "VALUES (".$ID1.",' ',' ',' ',' ')";
     if (!mysqli_query($MySqliLink,$InsertIntoStr))  { $Err=1;
        $ErrStr .= "MySqli hiba a <b>'felhasznalo_cim'</b> tábla írásánál 
                   (" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink);    
     }
     $r_ip     = getip(); 
-    $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$ID1.",'".$r_ip."','Létrehozás',NOW())";
+    $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum)"
+            . "VALUES (".$ID1.",'".$r_ip."','Létrehozás',NOW())";
     if (!mysqli_query($MySqliLink,$InsertIntoStr))  { $Err=1;
       $ErrStr .= "MySqli hiba a <b>'felhasznalo_mod'</b> tábla írásánál 
                  (" .mysqli_errno($MySqliLink). "): " . mysqli_error($MySqliLink);}

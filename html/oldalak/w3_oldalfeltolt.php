@@ -123,12 +123,14 @@ function CSVKategoriaBetolt()
            }
           // Ha nincs, akkor az új kategóriát felvesszük
         } else { 
-           $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$KatTMB['ONev']."','".$tiszta_OURL."','"
+           $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum) "
+                          . "VALUES ('".$KatTMB['ONev']."','".$tiszta_OURL."','"
            .$KatTMB['OKep']."','".$KatTMB['ORLeiras']."','".$KatTMB['OKulcszsavak']."',".$KatTMB['OTipus'].",".$KatTMB['OSzulo']
            .",".$KatTMB['OPrioritas'].", NOW())";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 04 ";} else { $ID1= mysqli_insert_id($MySqliLink);} 
 
-          $InsertIntoStr = "INSERT INTO oldal_tartalom  VALUES ('',$ID1, '".$KatTMB['OTartalom']."')";
+          $InsertIntoStr = "INSERT INTO oldal_tartalom  (Oid, OTartalom) "
+                         . "VALUES ($ID1, '".$KatTMB['OTartalom']."')";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 05 ";} 
         }
       }
@@ -237,12 +239,14 @@ function CSVHirKategoriaBetolt()
            }
           // Ha nincs, akkor az új kategóriót felvesszük
         } else { 
-           $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$HirKatTMB['ONev']."','".$tiszta_OURL."','"
-           .$HirKatTMB['OKep']."','".$HirKatTMB['ORLeiras']."','".$HirKatTMB['OKulcszsavak']."',".$HirKatTMB['OTipus'].","
-           .$Szuloid.",".$HirKatTMB['OPrioritas'].", NOW())";
+           $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                          . "VALUES ('".$HirKatTMB['ONev']."','".$tiszta_OURL."','"
+                          .$HirKatTMB['OKep']."','".$HirKatTMB['ORLeiras']."','".$HirKatTMB['OKulcszsavak']."',".$HirKatTMB['OTipus'].","
+                          .$Szuloid.",".$HirKatTMB['OPrioritas'].", NOW())";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 09 ";} else { $ID1= mysqli_insert_id($MySqliLink); } 
 
-          $InsertIntoStr = "INSERT INTO oldal_tartalom  VALUES ('',$ID1, '".$HirKatTMB['OTartalom']."')";
+          $InsertIntoStr = "INSERT INTO oldal_tartalom  (Oid, OTartalom) "
+                         . "VALUES ($ID1, '".$HirKatTMB['OTartalom']."')";
           if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 10 ";} 
         }
       }
@@ -371,12 +375,14 @@ function CSVAlkategoriaBetolt()
             // Ha nincs, akkor az új alkategóriát felvesszük
             mysqli_free_result($result);
 
-            $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$alKatTMB['ONev']."','".$tiszta_OURL."','"
-            .$alKatTMB['OKep']."','".$alKatTMB['ORLeiras']."','".$alKatTMB['OKulcszsavak']."',".$alKatTMB['OTipus'].",".$katid
-            .",".$alKatTMB['OPrioritas'].", NOW())";  
+            $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                          . " VALUES ('".$alKatTMB['ONev']."','".$tiszta_OURL."','"
+                             .$alKatTMB['OKep']."','".$alKatTMB['ORLeiras']."','".$alKatTMB['OKulcszsavak']."',".$alKatTMB['OTipus'].",".$katid
+                             .",".$alKatTMB['OPrioritas'].", NOW())";  
             if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 15 ";}  else { $ID1= mysqli_insert_id($MySqliLink);}
  
-            $InsertIntoStr = "INSERT INTO oldal_tartalom  VALUES ('',$ID1, '".$alKatTMB['OTartalom']."')";
+            $InsertIntoStr = "INSERT INTO oldal_tartalom  (Oid, OTartalom) "
+                           . "VALUES ($ID1, '".$alKatTMB['OTartalom']."')";
             if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 16 ";} 
           }
         } else {
@@ -507,12 +513,14 @@ function CSVHirekBetolt()
           } else {
             mysqli_free_result($result);
 
-            $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$HirekTMB['ONev']."','".$tiszta_OURL."','"
-            .$HirekTMB['OKep']."','".$HirekTMB['ORLeiras']."','".$HirekTMB['OKulcszsavak']."',".$HirekTMB['OTipus'].",".$katid
-            .",".$HirekTMB['OPrioritas'].", NOW())";  
+            $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                           . "VALUES ('".$HirekTMB['ONev']."','".$tiszta_OURL."','"
+                           .$HirekTMB['OKep']."','".$HirekTMB['ORLeiras']."','".$HirekTMB['OKulcszsavak']."',".$HirekTMB['OTipus'].",".$katid
+                           .",".$HirekTMB['OPrioritas'].", NOW())";  
             if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 21 ";}  else { $ID1= mysqli_insert_id($MySqliLink);} 
 
-            $InsertIntoStr = "INSERT INTO oldal_tartalom  VALUES ('',$ID1, '".$HirekTMB['OTartalom']."')";
+            $InsertIntoStr = "INSERT INTO oldal_tartalom (Oid, OTartalom) "
+                           . "VALUES ($ID1, '".$HirekTMB['OTartalom']."')";
             if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 22 ";} 
           }
         } else {
@@ -643,8 +651,9 @@ function CSVKepJellemzoBetolt()
               $KSorszam  = 1;
             }
 
-            $InsertIntoStr = "INSERT INTO kep VALUES ('', ".$Oid.",'"
-              .$KepTMB['KNev']."','".$KepTMB['KURL']."','".$KepTMB['KLeiras']."',".$KSorszam.");";
+            $InsertIntoStr = "INSERT INTO kep (Oid, KNev, KURL, KLeiras, KSorszam)  "
+                          . "VALUES (".$Oid.",'".$KepTMB['KNev']."','".$KepTMB['KURL']
+                          ."','".$KepTMB['KLeiras']."',".$KSorszam.");";
             if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 48 ";}
           }
         } else {
@@ -740,7 +749,8 @@ function CSVTermekJellemzoBetolt()
                 $row       = mysqli_fetch_array($result, MYSQLI_ASSOC);mysqli_free_result($result);
                 $JSorSzam  = $row['JSorszam']; $JSorSzam++;
 
-                $InsertIntoStr = "INSERT INTO termek_jellemzo VALUES ('', $Oid,'".$JellemzoNev."','".$JellemzoErtek."',$JSorSzam)";
+                $InsertIntoStr = "INSERT INTO termek_jellemzo (Oid, JNev, JErtek, JSorszam)"
+                               . "VALUES ($Oid,'".$JellemzoNev."','".$JellemzoErtek."',$JSorSzam)";
                 if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 43 ";} 
               }
             }
@@ -890,7 +900,8 @@ function CSVTermekBetolt()
                 $UpdateStr = "UPDATE oldal_tartalom SET OTartalom='".$TermekTMB['OTartalom']."' WHERE Oid=$Oid";
                 if (!mysqli_query($MySqliLink,$UpdateStr))  {echo " CSV hiba 27 ";}
               } else {
-                $InsertIntoStr = "INSERT INTO oldal_tartalom VALUES ('', $Oid,'".$TermekTMB['OTartalom']."')";
+                $InsertIntoStr = "INSERT INTO oldal_tartalom (Oid, OTartalom) "
+                               . "VALUES ($Oid,'".$TermekTMB['OTartalom']."')";
                 if (!mysqli_query($MySqliLink,$InsertIntoStr)) {echo " CSV hiba 28 ";} 
               }
             }
@@ -903,7 +914,8 @@ function CSVTermekBetolt()
                 $UpdateStr = "UPDATE termek_leiras SET TLeiras='".$TermekTMB['TLeiras']."' WHERE Oid=$Oid";
                 if (!mysqli_query($MySqliLink,$UpdateStr))  {echo " CSV hiba 30 ";}
               } else {
-                $InsertIntoStr = "INSERT INTO termek_leiras VALUES ('', $Oid,'".$TermekTMB['TLeiras']."')";
+                $InsertIntoStr = "INSERT INTO termek_leiras (Oid, TLeiras) "
+                               . "VALUES ($Oid,'".$TermekTMB['TLeiras']."')";
                 if (!mysqli_query($MySqliLink,$InsertIntoStr)) {echo " CSV hiba 31 ";}
               }
             }
@@ -927,29 +939,34 @@ function CSVTermekBetolt()
               $UpdateStr = "UPDATE termek SET $UpdateStr WHERE TKod='".$TermekTMB['TKod']."'";
               if (!mysqli_query($MySqliLink,$UpdateStr))  {echo " CSV hiba 33 ";}
             } else {
-              $InsertIntoStr = "INSERT INTO termek VALUES ('',$Oid,".$TermekTMB['TAr'].",".$TermekTMB['TSzorzo'].",'"
-              .$TermekTMB['TKod']."','".$TermekTMB['TtulNev']."','".$TermekTMB['TtulErt']."','"
-              .$TermekTMB['TSzalKlts']."',".$TermekTMB['TSzallit'].")";
+              $InsertIntoStr = "INSERT INTO termek (Oid, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit)"
+                             . "VALUES ($Oid,".$TermekTMB['TAr'].",".$TermekTMB['TSzorzo'].",'"
+                              .$TermekTMB['TKod']."','".$TermekTMB['TtulNev']."','".$TermekTMB['TtulErt']."','"
+                              .$TermekTMB['TSzalKlts']."',".$TermekTMB['TSzallit'].")";
               if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 34 ";} else { $ID1= mysqli_insert_id($MySqliLink);}
             }
 
             // Ha nincs, akkor az új terméket felvesszük
           } else {
              mysqli_free_result($result);
-             $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$TermekTMB['ONev']."','".$tiszta_OURL."','"
-             .$TermekTMB['OKep']."','".$TermekTMB['ORLeiras']."','".$TermekTMB['OKulcszsavak']."',".$TermekTMB['OTipus'].","
-             .$Szid.",".$TermekTMB['OPrioritas'].", NOW())";
+             $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                            . "VALUES ('".$TermekTMB['ONev']."','".$tiszta_OURL."','"
+                            .$TermekTMB['OKep']."','".$TermekTMB['ORLeiras']."','".$TermekTMB['OKulcszsavak']."',".$TermekTMB['OTipus'].","
+                            .$Szid.",".$TermekTMB['OPrioritas'].", NOW())";
              if (!mysqli_query($MySqliLink,$InsertIntoStr)) {echo " CSV hiba 35 ";} else { $ID1= mysqli_insert_id($MySqliLink);}
  
-             $InsertIntoStr = "INSERT INTO oldal_tartalom  VALUES ('',$ID1, '".$TermekTMB['OTartalom']."')";
+             $InsertIntoStr = "INSERT INTO oldal_tartalom (Oid, OTartalom) "
+                            . "VALUES ($ID1, '".$TermekTMB['OTartalom']."')";
              if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 36 ";}
 
-             $InsertIntoStr = "INSERT INTO termek_leiras  VALUES ('',$ID1, '".$TermekTMB['TLeiras']."')";
+             $InsertIntoStr = "INSERT INTO termek_leiras (Oid, TLeiras) "
+                            . "VALUES ($ID1, '".$TermekTMB['TLeiras']."')";
              if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 37 ";}
  
-             $InsertIntoStr = "INSERT INTO termek VALUES ('',$ID1,".$TermekTMB['TAr'].",".$TermekTMB['TSzorzo'].",'"
-             .$TermekTMB['TKod']."','".$TermekTMB['TtulNev']."','".$TermekTMB['TtulErt']."','"
-             .$TermekTMB['TSzalKlts']."',".$TermekTMB['TSzallit'].")";
+             $InsertIntoStr = "INSERT INTO termek (Oid, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit)"
+                            . "VALUES ($ID1,".$TermekTMB['TAr'].",".$TermekTMB['TSzorzo'].",'"
+                            .$TermekTMB['TKod']."','".$TermekTMB['TtulNev']."','".$TermekTMB['TtulErt']."','"
+                            .$TermekTMB['TSzalKlts']."',".$TermekTMB['TSzallit'].")";
              if (!mysqli_query($MySqliLink,$InsertIntoStr))  {echo " CSV hiba 38 ";} else { $ID1= mysqli_insert_id($MySqliLink);} 
           }
        } else { 

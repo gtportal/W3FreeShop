@@ -50,7 +50,8 @@ if (($_POST['submitAltalanos1'] == 'Létrehozás') and ($hozzaferes>6)) {
        $OKulcszsavak = ''; if ($_POST['OKulcszsavak'] > '') {$OKulcszsavak = tiszta_szov($_POST['OKulcszsavak']);}
        $OPrioritas   = ''; if ($_POST['OPrioritas'] > -1)   {$OPrioritas   = tiszta_szov($_POST['OPrioritas']);}
        // Az új oldal létrehozása
-       $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$UjONev."','".$tiszta_OURL."','','".$ORLeiras."','".$OKulcszsavak
+       $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                       . "VALUES ('".$UjONev."','".$tiszta_OURL."','','".$ORLeiras."','".$OKulcszsavak
                         ."',".$OTipus.",1,".$OPrioritas.", NOW())";
        if (!mysqli_query($MySqliLink,$InsertIntoStr)) {die("Hiba OM 03 ");} 
          else { $UjID= mysqli_insert_id($MySqliLink);}
@@ -117,32 +118,33 @@ if (($_POST['submitAltalanos'] == 'Másolás') and ($hozzaferes>6)) {
        $OKulcszsavak = $row['OKulcszsavak']; if ($_POST['OKulcszsavak'] > '') {$OKulcszsavak = tiszta_szov($_POST['OKulcszsavak']);}
        $OPrioritas   = $row['OPrioritas']; if ($_POST['OPrioritas'] > -1)  {$OPrioritas = tiszta_szov($_POST['OPrioritas']);}
        // Létrehozzuk az oldalt, és lekérdezzük az egyedi azonosítóját
-       $InsertIntoStr = "INSERT INTO oldal VALUES ('', '".$UjONev."','".$tiszta_OURL."','"
-         .$OKep."','".$ORLeiras."','".$OKulcszsavak."',".$OTipus.",".$OSzulo
-         .",".$OPrioritas.", NOW())";
+       $InsertIntoStr = "INSERT INTO oldal (ONev, OURL, OKep, ORLeiras, OKulcszsavak, OTipus, OSzulo, OPrioritas, ODatum)"
+                      . "VALUES ('".$UjONev."','".$tiszta_OURL."','"
+                                   .$OKep."','".$ORLeiras."','".$OKulcszsavak."',".$OTipus.",".$OSzulo
+                                   .",".$OPrioritas.", NOW())";
        if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 07 ");}  
          else { $UjID= mysqli_insert_id($MySqliLink);} 
        // Létrehozzuk az oldalhoz tartozó rekordokat a kapcsolódó táblákban is
-      $InsertIntoStr = "INSERT INTO oldal_tartalom ( id, Oid, OTartalom)
-           (SELECT '', $UjID, OTartalom FROM  oldal_tartalom WHERE Oid = $RegiOID)";
+      $InsertIntoStr = "INSERT INTO oldal_tartalom ( Oid, OTartalom)
+           (SELECT  $UjID, OTartalom FROM  oldal_tartalom WHERE Oid = $RegiOID)";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 08 ");} 
 
-      $InsertIntoStr = "INSERT INTO kep ( id, Oid, KNev, KURL, KLeiras, KSorszam)
-           (SELECT '', $UjID, KNev, KURL, KLeiras, KSorszam FROM  kep WHERE Oid = $RegiOID)";
+      $InsertIntoStr = "INSERT INTO kep ( Oid, KNev, KURL, KLeiras, KSorszam)
+           (SELECT  $UjID, KNev, KURL, KLeiras, KSorszam FROM  kep WHERE Oid = $RegiOID)";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 09 ");} 
 
       // Ha termékoldalról van szó, akkor a termékek tábláiban is létrehozzuk az oldalhoz kapcsolódó rekordokat 
       if ($OTipus== OTermek) {
-        $InsertIntoStr = "INSERT INTO termek_jellemzo ( id, Oid, JNev, JErtek, JSorszam)
-           (SELECT '', $UjID, JNev, JErtek, JSorszam FROM  termek_jellemzo WHERE Oid = $RegiOID)";
+        $InsertIntoStr = "INSERT INTO termek_jellemzo ( Oid, JNev, JErtek, JSorszam)
+           (SELECT  $UjID, JNev, JErtek, JSorszam FROM  termek_jellemzo WHERE Oid = $RegiOID)";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 10 ");}
 
-        $InsertIntoStr = "INSERT INTO termek ( id, Oid, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit)
-           (SELECT '', $UjID, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit FROM  termek WHERE Oid = $RegiOID)";
+        $InsertIntoStr = "INSERT INTO termek (Oid, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit)
+           (SELECT  $UjID, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit FROM  termek WHERE Oid = $RegiOID)";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 11 ");}
 
-        $InsertIntoStr = "INSERT INTO termek_leiras ( id, Oid, TLeiras)
-           (SELECT '', $UjID, TLeiras FROM  termek_leiras WHERE Oid = $RegiOID)";
+        $InsertIntoStr = "INSERT INTO termek_leiras (Oid, TLeiras)
+           (SELECT $UjID, TLeiras FROM  termek_leiras WHERE Oid = $RegiOID)";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 12 ");}
       }
 
@@ -291,7 +293,8 @@ if (($_POST['submitTartalom'] == 'Módosítás') && ($hozzaferes>6))  {
   } else {
      mysqli_free_result($result);
      // Ha a rekord még nem létezik, akkor létrehozzuk
-     $InsertIntoStr = "INSERT INTO oldal_tartalom VALUES ('', $f2,'$Tartalom')";
+     $InsertIntoStr = "INSERT INTO oldal_tartalom (Oid, OTartalom)"
+                    . "VALUES ($f2,'$Tartalom')";
      if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 20 ");} 
   }
 }
@@ -319,7 +322,7 @@ if (($_POST['submitTermekleiras'] == 'Módosítás') && ($hozzaferes>6)) {
   } else {
      mysqli_free_result($result);
     // Ha a rekord még nem létezik, akkor létrehozzuk
-    $InsertIntoStr = "INSERT INTO termek_leiras VALUES ('', $f2,'$Tartalom')";
+    $InsertIntoStr = "INSERT INTO termek_leiras (Oid, TLeiras) VALUES ($f2,'$Tartalom')";
     if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 23 ");} 
   }
 }
@@ -370,7 +373,8 @@ if (($_POST['submitTermek'] == 'Módosítás') && ($hozzaferes>6))  {
      } else {
        // Ha a termékkód még nem létezik, akkor létrehozzuk
        if (($TermekTmb[$i]['TKod']>'') and ($TermekTmb[$i]['TtulErt']>'')) {
-         $InsertIntoStr = "INSERT INTO termek VALUES ('', $f2,".$TermekTmb[$i]['TAr'].",".$TermekTmb[$i]['TSzorzo'].",
+         $InsertIntoStr = "INSERT INTO termek (Oid, TAr, TSzorzo, TKod, TtulNev, TtulErt, TSzalKlts, TSzallit)"
+                        . "VALUES ($f2,".$TermekTmb[$i]['TAr'].",".$TermekTmb[$i]['TSzorzo'].",
          '".$TermekTmb[$i]['TKod']."','".$TtulNev."','".$TermekTmb[$i]['TtulErt']."','".$TermekTmb[$i]['TSzalKlts']."',
           ".$TermekTmb[$i]['TSzallit'].")";
          if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 26 ");} 
@@ -417,8 +421,9 @@ if (($_POST['submitJellemzok'] == 'Módosítás') && ($hozzaferes>6))  {
        mysqli_free_result($result);
        // Ha a termék adott sorszámú jellemzője még nem létezik, akkor létrehozzuk
        if (($JellemzoTmb[$i]['JSorszam']>0) and ($JellemzoTmb[$i]['JNev']>'')) {
-         $InsertIntoStr = "INSERT INTO termek_jellemzo VALUES ('', $f2,'".$JellemzoTmb[$i]['JNev']."',
-         '".$JellemzoTmb[$i]['JErtek']."',".$JellemzoTmb[$i]['JSorszam'].")";
+         $InsertIntoStr = "INSERT INTO termek_jellemzo (Oid, JNev, JErtek, JSorszam)"
+                        . "VALUES ($f2,'".$JellemzoTmb[$i]['JNev']."',
+                          '".$JellemzoTmb[$i]['JErtek']."',".$JellemzoTmb[$i]['JSorszam'].")";
          if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 30 ");} 
        }
      }
@@ -495,7 +500,8 @@ if ((($_POST['submit_Kep1'] == 'Feltöltés')
       if (!mysqli_query($MySqliLink,$UpdateStr))  {die("Hiba OM 35 ");}
     } else {
        //Ha nem létezik az Oid oldal KSorszam sorszámú képe akkor létrehozzuk
-      $InsertIntoStr = "INSERT INTO kep  VALUES ('',$Oid,'$KNev','$KURL', '$KLeiras', $KSorszam)";
+      $InsertIntoStr = "INSERT INTO kep  (Oid, KNev, KURL, KLeiras, KSorszam)  "
+                     . "VALUES ($Oid,'$KNev','$KURL', '$KLeiras', $KSorszam)";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba OM 36 ");}
     }
   } else {
@@ -560,7 +566,7 @@ if ($funkcio!='UjOldal') { $HTMLkod .= "<input type='radio' name='divValszt' cla
 // ASz oldal típusa később nem módosítható
 
 
-if ($funkcio=='UjOldal') { $HTMLkod .= "<h1>HŐŐŐŐŐŐŐŐ</h1>";
+if ($funkcio=='UjOldal') { 
   $HTMLkod .= "\n<div id='DIValap' style='display:block;'>\n";
   $HTMLkod .= "<form action='?f0=szerkeszt&f1=Modosit&f2=$f2&f3=$f3&f4=$f4&f5=$f5' method='post' id='form_OAlapbeallUrlap'>\n";
   $HTMLkod .= "";
@@ -663,7 +669,7 @@ if ($Oid>0) {
 
   $HTMLkod .= "<p><label for='ORLeiras' class='label_1'>Oldal/termék rövíd leírása:</label><br> \n";
   $HTMLkod .= "<textarea name='ORLeiras' id='ORLeiras' placeholder='Rövíd leírása' 
-              rows='4' cols='100' > ".$row['ORLeiras']." </textarea></p>\n";
+              rows='4' cols='100' >".$row['ORLeiras']."</textarea></p>\n";
 
   $HTMLkod .= "<p><label for='OPrioritas' class='label_1'>Oldal priorítása:</label><br> \n";
   $HTMLkod .= "<input type='number' name='OPrioritas' id='OPrioritas' min='0' max='255' step='1'
@@ -906,7 +912,7 @@ if ($Oid>0) {
 
     $HTMLkod .= "<p><label for='KLeiras' class='label_1'>A kép rövíd leírása:</label><br> \n";
     $HTMLkod .= "<textarea name='KLeiras' id='KLeiras' placeholder='Kép rövíd leírása' 
-                rows='4' cols='40' > ".$KepekTmb[$i]['KLeiras']." </textarea></p>\n";
+                rows='4' cols='40' >".$KepekTmb[$i]['KLeiras']."</textarea></p>\n";
 
     if ($ModKepMut==$i) {$HTMLkod .= "<i>$UploadErr</i> ";}
 

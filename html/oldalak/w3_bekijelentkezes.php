@@ -86,7 +86,7 @@ if ($_POST['submit_Bejelentkezes'] == 'Bejelentkezés') {
       $UpdateStr = "UPDATE felhasznalo_reg SET Fhiba = 0 WHERE Fnev='$Fnev'";
       if (!mysqli_query($MySqliLink,$UpdateStr)) {die("Hiba BE 04 ");}
 
-      $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$FID.",'".$r_ip."','Bejelntkezés',NOW())";
+      $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum) VALUES (".$FID.",'".$r_ip."','Bejelntkezés',NOW())";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba BE 05 ");}
 
       $SelectStr = "SELECT * FROM felhasznalo_mod WHERE Fid=$FID AND Ftev='Bejelntkezés'"; 
@@ -107,7 +107,7 @@ if ($_POST['submit_Bejelentkezes'] == 'Bejelentkezés') {
       if (!mysqli_query($MySqliLink,$UpdateStr)) {die("Hiba BE 08 ");}
     
       if ($FID > 0) {
-        $InsertIntoStr = "INSERT INTO  felhasznalo_mod VALUES ('', ".$FID.",'".$r_ip."','Hibás jelszó',NOW())";
+        $InsertIntoStr = "INSERT INTO  felhasznalo_mod (Fid, Fip, Ftev, Datum) VALUES (".$FID.",'".$r_ip."','Hibás jelszó',NOW())";
         if (!mysqli_query($MySqliLink,$InsertIntoStr))  {die("Hiba BE 09 ");}
         $SelectStr = "SELECT * FROM felhasznalo_mod WHERE Fid=$FID AND Ftev='Hibás jelszó'"; 
         $result    = mysqli_query($MySqliLink,$SelectStr) OR die("Hiba BE 10 ");

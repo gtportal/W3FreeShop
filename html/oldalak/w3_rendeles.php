@@ -303,7 +303,9 @@ global $AktOldal,  $MySqliLink, $mm_azon, $mm_felhasznalo, $f0, $f1, $f2, $f3, $
 
   } else {
     //Ha nincs akkor létrehozzuk
-      $InsertIntoStr = "INSERT INTO megrendeles VALUES ('','$mm_azon','$Fnev','$Rszemnev','$Remail','$Rtelszam1','$Rtelszam2', 
+      $InsertIntoStr = "INSERT INTO megrendeles (mmAzon, Fnev, Rszemnev, Remail, Rtelszam1, Rtelszam2, Rorszag, Rvaros, Rirszam, Rcim,"
+              .        " SZorszag, SZvaros, SZirszam, SZcim, RStatus, Rip, RDatum)"
+                     . "VALUES ('$mm_azon','$Fnev','$Rszemnev','$Remail','$Rtelszam1','$Rtelszam2', 
                        '$Rorszag','$Rvaros','$Rirszam','$Rcim','$SZorszag','$SZvaros','$SZirszam','$SZcim',$RStatus,'$Rip',NOW())";
       if (!mysqli_query($MySqliLink,$InsertIntoStr))  { echo "Hiba RE 12 "; }    
   }
@@ -355,7 +357,8 @@ global $AktOldal,  $MySqliLink, $mm_azon, $mm_felhasznalo, $f0, $f1, $f2, $f3, $
       $rowtermek = mysqli_fetch_array($result, MYSQLI_ASSOC); mysqli_free_result($result);
       $TermekArr[$j]['ONev'] = $rowtermek['ONev'];
 
-      $InsertIntoStr = "INSERT INTO megrendelt_termek VALUES ('',$megrendelesID,'".$TermekArr[$j]['ONev']."','".$RTermekKod[$j]."',".$RTermekDB[$j].","
+      $InsertIntoStr = "INSERT INTO megrendelt_termek (RAzon, RTNev, RTKod, RDB, RTAr, RTSzorzo, RTSzalKlts, RTSzallit)"
+              . "VALUES ($megrendelesID,'".$TermekArr[$j]['ONev']."','".$RTermekKod[$j]."',".$RTermekDB[$j].","
                        .$TermekArr[$j]['TAr'].",".$TermekArr[$j]['TSzorzo'].",'".$TermekArr[$j]['TSzalKlts']."',".$TermekArr[$j]['TSzallit'].")";
       if (!mysqli_query($MySqliLink,$InsertIntoStr)) { echo "Hiba RE 17 "; }
   
@@ -388,7 +391,7 @@ if (($_POST['ren_status'] > '') and ($hozzaferes>5)){
     case "Törlés":  $Ujstatus=100;  break;
   }
   // Aktuális státusz lekérdezése  
-  $SelectStr = "SELECT * FROM megrendeles WHERE id=$f1";  
+  $SelectStr = "SELECT * FROM megrendeles WHERE id=$f1 ORDER BY RDatum DESC";  
   $result    = mysqli_query($MySqliLink,$SelectStr) OR die("Hiba RE 19 "); 
   $row       = mysqli_fetch_array($result, MYSQLI_ASSOC); mysqli_free_result($result);
   $AktStatus = $row['RStatus'];
